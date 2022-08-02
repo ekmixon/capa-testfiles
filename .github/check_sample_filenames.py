@@ -32,12 +32,10 @@ def main(argv=None):
     parser.add_argument("testfiles", type=str, help="Path to tests/data")
     args = parser.parse_args(args=argv)
 
-    test_failed = test_data_filenames(args)
-    if test_failed:
+    if test_failed := test_data_filenames(args):
         return 1
-    else:
-        logger.info("test files look good!")
-        return 0
+    logger.info("test files look good!")
+    return 0
 
 
 def test_data_filenames(args):
